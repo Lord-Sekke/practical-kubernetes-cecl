@@ -23,6 +23,10 @@ kops create cluster \
     --cloud aws \
     --yes
 
+# Installing Ingress
+kubectl create \
+    -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/ingress-nginx/v1.6.0.yaml
+
 # Downloading files
 mkdir pv &&\ 
 cd pv &&\
@@ -39,3 +43,12 @@ cat pv/pv.yml \
     "s@REPLACE_ME_3@$VOLUME_ID_3@g" \
     | kubectl create -f - \
     --save-config
+
+# Claiming persistent volumes
+kubectl create namespace jenkins &&\
+kubectl create -f pv/pvc.yml \
+    --save-config
+
+# Deploying Jenkins
+kubectl apply \
+    -f pv/jenkins-pv.yml
