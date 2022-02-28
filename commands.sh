@@ -19,7 +19,9 @@ kops create cluster \
     --node-size t2.medium \
     --zones $ZONES \
     --master-zones $ZONES \
+    --ssh-public-key devops23.pub \
     --networking kubenet \
+    --kubernetes-version v1.14.8 \
     --cloud aws \
     --yes
 
