@@ -20,6 +20,7 @@ kops create cluster \
     --zones $ZONES \
     --master-zones $ZONES \
     --networking kubenet \
+    --kubernetes-version v1.14.8 \
     --cloud aws \
     --yes
 
