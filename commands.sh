@@ -29,8 +29,8 @@ kops update cluster $NAME --yes
 # Rolling cluster
 kops rolling-update cluster --cloudonly --yes
 
-# Wait 2 minutes
-sleep 2m 
+# Wait 3 minutes
+sleep 3m 
 
 # Installing Ingress
 kubectl create \
