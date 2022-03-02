@@ -10,7 +10,7 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-# Cluster Creation
+# Cluster creation
 kops create cluster \
     --name $NAME \
     --master-count 3 \
@@ -22,6 +22,15 @@ kops create cluster \
     --networking kubenet \
     --cloud aws \
     --yes
+
+# Update cluster
+kops update cluster $NAME --yes
+
+# Rolling cluster
+kops rolling-update cluster --cloudonly --yes
+
+# Wait 2 minutes
+sleep 2m 
 
 # Installing Ingress
 kubectl create \
