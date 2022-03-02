@@ -29,18 +29,18 @@ kops update cluster $NAME --yes
 # Rolling cluster
 kops rolling-update cluster --cloudonly --yes
 
-# Wait 3 minutes
-sleep 3m 
-
-# Installing Ingress
-kubectl create \
-    -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/ingress-nginx/v1.6.0.yaml
+# Wait 5 minutes
+sleep 5m 
 
 # Downloading files
 mkdir pv &&\ 
 cd pv &&\
 wget https://raw.githubusercontent.com/CourseMaterial/practical-kubernetes/main/pv.yml https://raw.githubusercontent.com/CourseMaterial/practical-kubernetes/main/pvc.yml https://raw.githubusercontent.com/CourseMaterial/practical-kubernetes/main/jenkins-pv.yml &&\
 cd ..
+
+# Installing Ingress
+kubectl create \
+    -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/ingress-nginx/v1.6.0.yaml
 
 # Creating persistent volumes
 cat pv/pv.yml \
