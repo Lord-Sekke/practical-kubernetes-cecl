@@ -29,6 +29,9 @@ kops update cluster $NAME --yes
 # Rolling cluster
 kops rolling-update cluster --cloudonly --yes
 
+# Echo command
+echo "The script will be put on pause for the next 5 minutes so the Kubernetes master and worker nodes can be initialized properly"
+
 # Wait 5 minutes
 sleep 5m 
 
