@@ -46,21 +46,21 @@ AZ_1=$(cat zones | head -n 1)
 AZ_2=$(cat zones | tail -n 1)
 
 # Creating EBS Volums
-VOLUME_ID_1=$(aws ec2 create-volume \
+export VOLUME_ID_1=$(aws ec2 create-volume \
     --availability-zone $AZ_1 \
     --size 10 \
     --volume-type gp2 \
     --tag-specifications "ResourceType=volume,Tags=[{Key=KubernetesCluster,Value=$NAME}]" \
     | jq -r '.VolumeId')
 
-VOLUME_ID_2=$(aws ec2 create-volume \
+export VOLUME_ID_2=$(aws ec2 create-volume \
     --availability-zone $AZ_1 \
     --size 10 \
     --volume-type gp2 \
     --tag-specifications "ResourceType=volume,Tags=[{Key=KubernetesCluster,Value=$NAME}]" \
     | jq -r '.VolumeId')
 
-VOLUME_ID_3=$(aws ec2 create-volume \
+export VOLUME_ID_3=$(aws ec2 create-volume \
     --availability-zone $AZ_2 \
     --size 10 \
     --volume-type gp2 \
