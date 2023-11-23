@@ -16,12 +16,12 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 # Cluster creation
 kops create cluster \
     --name $NAME \
-    --master-count 3 \
-    --master-size t2.small \
+    --control-plane-count 3 \
+    --control-plane-size t2.small \
     --node-count 2 \
     --node-size t2.medium \
     --zones $ZONES \
-    --master-zones $ZONES \
+    --control-plane-zones $ZONES \
     --networking kubenet \
     --cloud aws \
     --yes
